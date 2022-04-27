@@ -3,7 +3,7 @@ const morgan = require("morgan");
 
 const app = express();
 
-// Middelware for loggin in Morgan
+// Middelware for logging in Morgan
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
 
 app.get("/api/TodoItems", (req, res) => {});
 
-app.post("api/TodoItems", (req, res) => {});
+app.post("api/TodoItems/{id}", (req, res) => {});
+
+app.post("/api/TodoItems/:number", (req, res) => {});
+
+app.delete("/api/TodoItems/:number", (req, res) => {});
 
 module.exports = app;

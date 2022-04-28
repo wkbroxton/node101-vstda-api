@@ -1,5 +1,5 @@
 const server = require("./app");
 
-server.listen(3000, () => {
-  console.log(`server is listening on 3000`);
+server.listen(8484, () => {
+  console.log(`server is listening on 8484`);
 });

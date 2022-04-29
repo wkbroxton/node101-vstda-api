@@ -44,10 +44,22 @@ app.get("/api/TodoItems/:id", (req, res) => {
     .json(data.filter((todoItem) => todoItem.todoItemId == req.params.id)[0]);
 });
 
-app.post("api/TodoItems/:id", (req, res) => {});
+app.post("/api/TodoItems", (req, res) => {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].todoItemId == req.body.todoItemId) {
+      data.splice(i, 1, req.body);
+      res.status(201).send(req.body);
+      return;
+    }
+  }
+  data.push(req.body);
+  res.status(201).send(req.body);
+});
 
-app.post("/api/TodoItems/:number", (req, res) => {});
-
-app.delete("/api/TodoItems/:number", (req, res) => {});
+app.delete("/api/TodoItems/:id", (req, res) => {
+  res
+    .status(200)
+    .json(data.filter((todoItem) => todoItem.todoItemId == req.params.id)[0]);
+});
 
 module.exports = app;
